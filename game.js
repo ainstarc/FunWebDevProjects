@@ -5,6 +5,7 @@ var userClickedPattern = [];
 
 var started = false;
 var level = 0;
+var maxLevel = 0;
 
 $(document).keypress(function () {
   if (!started) {
@@ -56,6 +57,10 @@ function nextSequence() {
   userClickedPattern = [];
   level++;
   $("#level-title").text("Level " + level);
+  if (maxLevel < level) {
+    $("#max").text(level);
+    maxLevel = level;
+  }
   var randomNumber = Math.floor(Math.random() * 4);
   var randomChosenColour = buttonColours[randomNumber];
   gamePattern.push(randomChosenColour);
